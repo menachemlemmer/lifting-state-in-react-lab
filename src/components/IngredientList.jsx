@@ -1,19 +1,20 @@
 import { availableIngredients } from "../App";
+import Ingredient from "./Ingredient";
 
 const IngredientList = (props) => {
   return (
     <ul>
       {availableIngredients.map((ingredient, index) => {
         return (
-          <li style={{ backgroundColor: `${ingredient.color}` }} key={index}>
-            {ingredient.name}
-            <button
-              onClick={() => props.addToBurger(ingredient)}
-              style={{ color: "white" }}
-            >
-              +
-            </button>
-          </li>
+          <Ingredient
+            props={{
+              index: index,
+              ingredient: ingredient,
+              action: props.addToBurger,
+              request: "add",
+            }}
+            key={index}
+          />
         );
       })}
     </ul>
